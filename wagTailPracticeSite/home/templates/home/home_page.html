@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailembeds_tags %}
+{% load wagtailcore_tags %}
+
+
+
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+
+{% comment %}
+Delete the line below if you're just getting started and want to remove the welcome screen!
+{% endcomment %}
+<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div style="text-align: center; max-width: 800px; margin: auto;">
+<h1>{{ page.title }}</h1> 
+
+<h2>{{ page.subtitle }}</h2> 
+
+{{ page.body|richtext }} 
+
+{% if page.video_url %}
+    <iframe width="560" height="315"
+        src="{{ page.video_url }}"
+        frameborder="0" allowfullscreen>
+    </iframe>
+{% endif %}
+
+{% comment %}
+Delete the line below if you're just getting started and want to remove the welcome screen!
+{% endcomment %}
+</div>
+
+{% endblock content %}
